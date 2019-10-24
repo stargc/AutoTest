@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="classes" thread-count="1">
+    <parameter name="baseUrl" value="http://10.20.5.6:8098/" />
+    <!--<test verbose="1" name="loginTest">-->
+        <!--<classes>-->
+            <!--<class name="com.ehl.autotest.test.login.LoginTest" />-->
+            <!--<class name="com.ehl.autotest.test.login.LoginSuccessTest" />-->
+            <!--<class name="com.ehl.autotest.test.login.LoginBackTest" />-->
+        <!--</classes>-->
+    <!--</test>-->
+    <test verbose="2" name="dataset">
+        <classes>
+            <class name="com.ehl.autotest.test.dataset.DatasetTest" />
+        </classes>
+    </test>
+    <listeners>
+        <listener class-name="org.uncommons.reportng.HTMLReporter" />
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+    </listeners>
+</suite>
