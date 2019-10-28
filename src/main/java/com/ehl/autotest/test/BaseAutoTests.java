@@ -25,16 +25,16 @@ public class BaseAutoTests {
 	/***
 	 * 打开浏览器
 	 */
-	@BeforeSuite
-	@Parameters({"baseUrl"})
-	public void openBrowser(String baseUrl) {
+	@BeforeSuite(alwaysRun = true)
+	@Parameters({"baseUrl","driverLocation"})
+	public void openBrowser(String baseUrl,String driverLocation) {
 		System.out.println("start --- openBrowser");
 
-		System.setProperty("webdriver.chrome.driver","D:/Download/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver",driverLocation);
 		ChromeOptions options = new ChromeOptions();
-		options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+
 		chromeDriver = new ChromeDriver(options);
-		chromeDriver.manage().window().maximize();
+//		chromeDriver.manage().window().maximize();
 		chromeDriver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
 		wait = new WebDriverWait(chromeDriver,10,1);
 		actions = new Actions(chromeDriver);
@@ -45,7 +45,7 @@ public class BaseAutoTests {
 	/***
 	 * 关闭浏览器
 	 */
-	@AfterSuite
+	@AfterSuite(alwaysRun = true)
 	public void closeBrowser() {
 		System.out.println("end --- closeBrowser");
 		chromeDriver.quit();
